@@ -10,27 +10,36 @@ I have designed a small API to show the benefits and advantage of RAML. The API 
 ``
 npm install -g raml2html
 ``
+
 Once [raml2html](https://www.npmjs.com/package/raml2html) is installed you can generate the HTML as shown below:
 ``
 raml2html music.raml > music.html
 ``
+
 This produces the HTML file that is easy to understand. I have attached some screen-shots here.
+
 ### Initial Screen showing all the APIS in music.raml
 ![Initial Page](images/initialPage.PNG "Initial Screen showing all the APIS in music.raml")
+
 ### Page with all operations in all resources defined in music.raml
+
 ![Page with all operations](images/pagewithAllOperations.PNG "Page with all operations in all resources defined in music.raml")
 
 ### Page with update operation for a song resource in music.raml
+
 ![Page with update operation](images/updateSong.PNG "Page with update operation for a song resource")
 
 ## Running the mock service
 
 ``npm install -g osprey-mock-service
 ``
+
 Start the [osprey-mock-service](https://www.npmjs.com/package/osprey-mock-service) from the CLI.  This will automatically use the baseUri as the path to the mock service. For example, http://example.com/api will result in http://localhost:{PORT}/api.
+
 
 ``osprey-mock-service -f music.raml -p 8000
 ``
+
 The parameters in the above command are
 * -f Path to the root RAML definition (E.g. /path/to/api.raml)
 * -p Port number to bind the server locally
