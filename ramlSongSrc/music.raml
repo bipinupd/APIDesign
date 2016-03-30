@@ -1,0 +1,55 @@
+#%RAML 0.8
+---
+title: Music you love
+baseUri: http://mumusic.org/api
+schemas: !include songSchema.raml
+/songs:
+  get:
+    queryParameters:
+      genre:
+        description: filter songs by genre
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examplesonglist.json
+  post:
+    body:
+      application/json:
+        schema: songSchema
+    responses:
+      201:
+        description: Book has been successfully created.
+        body:
+          application/json:
+            example: !include examplesonglist.json
+      409:
+        description: Book already exists.
+
+  /{songId}:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              schema: songSchema
+              example: |
+                {
+                  "title": "Song Title",
+                  "genre": "Hip Hop"
+                  "artist": "Mr. Artist"
+                }
+    put:
+      body:
+        application/json:
+          schema: songSchema
+      responses:
+        200:
+          description: The record is updated
+          body:
+            application/json:
+              example: !include exampleSongUpdated.json
+        400:
+          description: Unable to update the song information
+    delete:
+      description: This method will delete a song.
